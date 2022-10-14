@@ -71,3 +71,84 @@ nombre.clear()
 print(nombre)
 
 # Para mas informacion: https://docs.python.org/3/tutorial/datastructures.html
+
+
+# --------------------------------------
+# Tuplas
+# son ordenadas PERO no se pueden modificar (una vez definidas no se puede alterar)
+
+cursos = ('backend', 'frontend')
+mix = (1, 80.2, False, 'Eduardo', (1,2,3))
+
+print(cursos[0])
+
+print(cursos[:1])
+# ni agregar
+# cursos.append('design')
+
+# ni editar
+# cursos[0] = 'mobile'
+
+# ni eliminar
+# del cursos[0]
+
+print(cursos)
+print(len(cursos))
+
+
+# Para mas informacion: https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences
+
+
+# ---------------------------------
+# Conjunto (Set)
+# Coleccion de datos DESORDENADA una vez creada ya no se puede acceder mediante sus posiciones pero si se puede modificar
+
+
+primos = {1, 3, 5, 7, 11, 13, 17, 19}
+estaciones = {'Verano', 'Otoño', 'Primavera', 'Invierno'}
+print(primos)
+print(estaciones)
+print(17 in primos)
+# se puede agregar nuevos elementos a un set
+primos.add(23)
+print(primos)
+
+# se puede eliminar
+primos.pop()
+print(primos)
+
+
+# Para mas informacion: https://docs.python.org/3/tutorial/datastructures.html#sets
+
+
+# ---------------------------------------
+# Diccionarios
+# Una coleccion ordenada PERO por llaves (no por indice) y editable
+persona = {
+    'nombre': 'Eduardo',
+    'apellido': 'Suarez',
+    'correo': 'ederiveroman@gmail.com',
+    'telefono': '+51974207075'
+}
+
+print(persona['nombre'])
+# tratara de devolver el contenido de esa llave, si no existe retornara None o lo que se defina en el segundo parametro
+print(persona.get('direccion', 'No hay'))
+
+# devuelve una lista con todas las llaves
+print(persona.keys())
+
+# devuelve una lista con todos los valores
+print(persona.values())
+
+persona['nombre'] = 'Luis'
+persona['direccion'] = 'Calle los ruiseñores 1070A'
+# persona.get('direccion') = 'Calle los ruiseñores 1070A'
+print(persona)
+
+# remueve el valor de esa llave y la elimina y opcionalmente podemos almacenar el valor en otra varible
+correo_eliminado = persona.pop('correo')
+print(persona)
+print(correo_eliminado)
+
+# Para mas informacion: https://docs.python.org/3/tutorial/datastructures.html#dictionaries
