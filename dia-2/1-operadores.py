@@ -61,5 +61,19 @@ numero1 /= 5 # numero1 = numero1 / 5
 print(numero1) # Float
 print(numero2) # Int
 print(numero1 == numero2)
-print(int(40.7))
+print(int(40.7)) # asi se convierte el tipo de dato
+# int('eduardo') # no se puede convertir tipos de datos irreales
 print(type(numero1) == type(numero2))
+
+# MAYOR | MAYOR O IGUAL
+print(10 > 9.58)
+print(10 > int('5'))
+print(50 >= 30)
+
+# MENOR | MENOR O IGUAL
+print(50 < 80)
+print(50 <= 50)
+print(50 <= 50)
+# Nota: siempre va el simbolo de mayor(>) o menor(<) antes del igual, nunca al revez porque sino python entiende que se esta tratando de una asignacion
+
+print (100>= float("40.24"))
