@@ -77,3 +77,46 @@ print(50 <= 50)
 # Nota: siempre va el simbolo de mayor(>) o menor(<) antes del igual, nunca al revez porque sino python entiende que se esta tratando de una asignacion
 
 print (100>= float("40.24"))
+
+# -----------------------------------------
+# OPERADORES LOGICOS
+# Sirve para comparar varias condicionales
+# && para indicar un AND , en python se usa la palabra AND
+# || para indicar un OR, en python se usa la palabra OR
+
+# and > TODAS las condiciones tienen que ser verdaderas para que todo sea verdadero
+eduardo=30
+ronald= 25
+henry=25
+carmen=19
+angel=15
+
+print((angel > eduardo) and (ronald < henry))
+
+
+print((eduardo > angel) and (carmen < ronald))
+
+# or > AL MENOS una condicion tiene que ser verdadera para que todo sea verdadero
+print((carmen > ronald) or (eduardo > ronald))
+
+# COMPUERTAS LOGICAS ( operador AND)
+#  V1 |  V2  |  R
+#  F  |   F  |  F
+#  V  |   F  |  F
+#  F  |   V  |  F
+#  V  |   V  |  V
+
+# COMPUERTA LOGICA (operador OR)
+#  V1 |  V2  |  R
+#  F  |   F  |  F
+#  V  |   F  |  V
+#  F  |   V  |  V
+#  V  |   V  |  V
+
+
+# -----------------------------------------
+# OPERADORES DE CONTENIDO
+verduras = ['apio', 'rocoto', 'zanahoria']
+
+print('tomate cherry' in verduras)
+print('champiñon' not in verduras)
