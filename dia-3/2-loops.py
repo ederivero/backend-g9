@@ -11,5 +11,12 @@ for i, alumno in enumerate(alumnos):
     # pass
     # break
     continue
-  print(i, alumno)
+  # print(i, alumno)
 
+for numero in range(100):
+  # print(numero)
+  pass
+
+palabra = 'Hola mundo'
+for letra in palabra:
+  print(letra)
