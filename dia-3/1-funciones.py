@@ -24,4 +24,22 @@ def buscarNombre():
   #   return True
   return True
 
-print(buscarNombre())
+
+
+todos_lo_nombres = input('Ingrese nombres separados por comas: ')
+
+nombre_a_buscar = input('Ingrese el nombre a buscar: ')
+
+def separarNombres(lista_nombres):
+  nombres = lista_nombres.split(',')
+  return nombres
+
+
+def buscarPersona(nombre):
+  array_nombres = separarNombres(todos_lo_nombres)
+
+  if nombre in array_nombres:
+    return '{} ha sido encontrado {}'.format(nombre, '😃')
+  return f'No pudimos encontrar a {nombre} {"😢"}'
+
+print(buscarPersona(nombre_a_buscar))
