@@ -25,10 +25,13 @@ eduardo.estatura = 1.89
 gabriela.estatura = 1.75
 
 # retorna el nombre de la clase en formato string
-print(Persona.__name__)
+print(Persona.__name__) # Persona
 print(eduardo)
 print(eduardo.estatura)
 print(gabriela.estatura)
 
 eduardo.saludar()
 gabriela.saludar()
+resultado = eduardo.saludar_cordialmente('Angel')
+
+print(resultado)
