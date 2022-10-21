@@ -1,0 +1,3 @@
+# este es un comentario
+entorno_*
+# en el gitignore podemos utilizar patrones usando el * indicaremos que no nos interesa que viene ahi, solamente que ignore lo que viene antes o despues

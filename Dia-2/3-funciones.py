@@ -57,9 +57,8 @@ print(curso.get('calificacion'))
 print(curso.get('nombre', 'No Hay'))
 # modificar valores en mi diccionario, si esa llave no existe, entonces se creara
 curso['mas_info'] = 'esta es una informacion adicional'
+print(curso)
 
 # metodo .get SOLAMENTE sirve para visualizar la informacion, mas no para asignacion
 # curso.get('otra_info') = 'esta es otra informacion'
-
-
 
