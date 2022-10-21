@@ -1,6 +1,4 @@
 # el try va de la mano con el except, no pueden ir separados
-from typing import final
-
 
 try:
     # si no se emite ningun error dentro del try JAMAS ingresara al except

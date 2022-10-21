@@ -19,12 +19,18 @@ class Producto:
             'cantidad': cantidad
         }
         self.__ventas.append(venta)
-
+        print(self.__sacar_igv(self.precio))
         print('Venta registrada exitosamente')
     
     def mostrar_ventas(self):
         # retornar las ventas registradas de ese producto
         return self.__ventas
+    
+    def __sacar_igv(self, precio):
+        # Este metodo pasa a ser privado desde que le ponemos '__' al inicio del nombre
+        print(precio * 0.18)
+        return (precio * 1.18) - precio
+
 
 
 detergente = Producto(nombre='Detergente Sapito', precio=4.50, cantidad=50)
@@ -37,5 +43,8 @@ detergente.generar_venta(fecha='2022-10-30', cliente='Franco Portugal', cantidad
 detergente.generar_venta(fecha='2022-11-02', cliente='Michelle Ordoñez', cantidad=15)
 # print(detergente.__ventas)
 
-
 print(detergente.mostrar_ventas())
+
+
+# No se puede acceder al metodo __sacar_igv desde que es un metodo privado
+# print(detergente.__sacar_igv(80.00))
