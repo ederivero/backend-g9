@@ -4,6 +4,8 @@ pip freeze                          > lista todas las librerias instaladas en el
 pip list                            > lista TODAS las librerias (instaladas manualmente y las instaladas predeterminadamente)
 
 
+python -m venv NOMBRE_ENTORNO 
+
 FORMAS DE LEVANTAR EL ENTORNO
 Windows:
 - CMD o PowerShell:
