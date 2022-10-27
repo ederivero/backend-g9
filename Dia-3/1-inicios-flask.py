@@ -1,10 +1,11 @@
 from flask import Flask, request
 # request > toda la informacion que puedo leer del usuario, dentro de ella tendremos el body
 from datetime import datetime
+from flask_cors import CORS
 
 usuarios = [
     {
-        'correo':'ederiveroman@gmail.com',
+        'correo': 'ederiveroman@gmail.com',
         'nombre': 'eduardo',
         'apellido': 'de Rivero'
     }
@@ -14,16 +15,22 @@ usuarios = [
 # print(__name__)
 app = Flask(__name__)
 
+# DECLARAR LOS CORS (intercambio de recursos de origen compartido)
+CORS(app)
+
 # Endpoint > es cuando definimos una ruta para que pueda ser accedida
 # si no se define que verbo HTTP puede acceder, entonces el valor por defecto sera GET
-@app.route('/', methods = ['GET'])
+
+
+@app.route('/', methods=['GET'])
 def inicio():
     # Controlador (Controller) > la funcionabilidad que tendra mi endpoint
     print('ingreso al endpoint inicial')
     # Siempre en todo controlador hay que retornar algo
     return 'Bienvenido a mi primera API en Flask semana 2'
 
-@app.route('/estado', methods= ['GET'])
+
+@app.route('/estado', methods=['GET'])
 def estado():
     # https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
     hora_servidor = datetime.now().strftime('%Y-%m-%d %I:%M:%S %p')
@@ -32,7 +39,8 @@ def estado():
         'hora': hora_servidor
     }
 
-@app.route('/registrarse', methods= ['POST'])
+
+@app.route('/registrarse', methods=['POST'])
 def registro():
     # request.data > el body pero en formato puro (formato bytes)
     print(request.data)
@@ -60,6 +68,8 @@ def registro():
 
 # crear un endpoint que sea '/listar-usuarios' y este devolvera el siguiente resultado
 # { message: 'Los usuarios son', content: [ {...}, {...} ] }
+
+
 @app.route('/listar-usuarios', methods=['GET'])
 def listar():
     return {
