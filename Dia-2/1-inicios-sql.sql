@@ -91,7 +91,8 @@ SELECT * FROM alumnos WHERE fec_nacimiento < '1990-01-01';
 -- Dame todos los alumnos cuyo nombre contenga la letra a
 SELECT nombre FROM alumnos WHERE nombre LIKE '%a%';
 -- Dame todos los alumnos cuya ultima letra sea la a
--- con la propiedad BINARY le indicamos que haga la comparacion a nivel de binarios
+-- con la propiedad BINARY le indicamos que haga la comparacion a nivel de binarios esto incluye la comparacion entre mayus, minus
+-- y entre tildes y caracteres especiales como la 'ñ'
 SELECT nombre FROM alumnos WHERE nombre LIKE BINARY '%A';
 
 SELECT nombre FROM alumnos WHERE nombre LIKE '%d%u%';
@@ -105,9 +106,11 @@ SELECT nombre FROM alumnos WHERE nombre LIKE '%d%u%';
 SELECT nombre FROM alumnos WHERE nombre LIKE '%d_u%';
 
 
--- 4. 
+-- 4. Mostrar todos los alumnos cuyo nombre tenga al menos la letra 'n'
+SELECT * FROM alumnos WHERE nombre LIKE '%n%';
 
+-- 5. Mostrar todos los alumnos cuyo segundo digito del documento sea '8'
+SELECT * FROM alumnos WHERE num_documento LIKE '_8%';
 
-
-
-
+-- 6. Mostrar todos los alumnos cuyo sexo contenga la letra 'i' seguido de una letra cualquiera y luego la letra 'o'
+SELECT * FROM alumnos WHERE sexo LIKE '%i_o%';
