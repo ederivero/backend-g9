@@ -59,3 +59,55 @@ INSERT INTO alumnos VALUES
                     (DEFAULT, 'Jair', 'MASCULINO', DEFAULT, '34598746', '1995-04-09');
 					
 SELECT * FROM ALUMNOS;
+
+-- NOTA : SIEMPRE EN LOS UPDATES Y DELETES TENEMOS QUE EJECUTARLOS CON UNA CONDICIONAL
+-- DELETE FROM tabla WHERE condicional
+DELETE FROM alumnos WHERE id>=10 AND id <=12;
+
+SELECT * FROM ALUMNOS;
+
+-- UPDATE tabla SET columna='Nuevo valor' WHERE condicional
+UPDATE alumnos SET nombre='Marimar' WHERE id = 8;
+UPDATE alumnos SET num_documento = '99564879', nombre = 'Rodrigo' WHERE id = 9;
+
+SELECT * FROM alumnos;
+
+
+INSERT INTO alumnos (nombre, sexo, num_documento, fec_nacimiento) VALUES
+					('Maria Alejandra', 'BINARIX', '49596785', '1995-06-19');
+
+
+SELECT * FROM alumnos;
+
+-- 1. Mostrar todos los alumnos que tengan C.E.
+SELECT * FROM alumnos WHERE tipo_documento = 'C.E.';
+-- 2. Mostrar todos los alumnos que tengan SEXO MASCULINO O FEMENINO
+SELECT * FROM alumnos WHERE sexo = 'MASCULINO' OR sexo='FEMENINO';
+SELECT * FROM alumnos WHERE sexo IN ('MASCULINO', 'FEMENINO');
+
+-- 3. Mostrar a todos los alumnos que nacieron antes del 1990-01-01
+SELECT * FROM alumnos WHERE fec_nacimiento < '1990-01-01';
+
+-- Dame todos los alumnos cuyo nombre contenga la letra a
+SELECT nombre FROM alumnos WHERE nombre LIKE '%a%';
+-- Dame todos los alumnos cuya ultima letra sea la a
+-- con la propiedad BINARY le indicamos que haga la comparacion a nivel de binarios
+SELECT nombre FROM alumnos WHERE nombre LIKE BINARY '%A';
+
+SELECT nombre FROM alumnos WHERE nombre LIKE '%d%u%';
+
+-- Dame todos los alumnos cuya segunda letra sea la o
+SELECT nombre FROM alumnos WHERE nombre LIKE '_o%';
+
+-- SELECT nombre FROM alumnos WHERE nombre LIKE 'E__%';
+
+SELECT nombre FROM alumnos WHERE nombre LIKE '%d%u%';
+SELECT nombre FROM alumnos WHERE nombre LIKE '%d_u%';
+
+
+-- 4. 
+
+
+
+
+
