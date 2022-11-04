@@ -65,4 +65,9 @@ def devolver_alumnos():
     return render_template('mostrar_alumnos.html', alumnos=resultado_final, mensaje='Hola desde flask')
 
 
+@app.route("/agregar-alumno", methods=['GET'])
+def agregar_alumno():
+    return render_template('agregar_alumno.html')
+
+
 app.run(debug=True)
