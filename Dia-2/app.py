@@ -33,7 +33,7 @@ def pagina_inicial():
     return render_template('inicio.html')
 
 
-@app.route('/alumnos', methods=['GET'])
+@app.route('/mostrar-alumnos', methods=['GET'])
 def devolver_alumnos():
     # me crea una conexion con la base de datos
     cursor = mysql.connection.cursor()
@@ -42,10 +42,27 @@ def devolver_alumnos():
     # devolver toda la informacion de esa consulta
     resultado = cursor.fetchall()
     print(resultado)
+    resultado_final = []
+    # itero mi resultado de mi consulta a la bd
+    for alumno in resultado:
+        # creo un diccionario para indicar la llave de cada elemento
+        alumno_diccionario = {
+            'id': alumno[0],
+            'nombre': alumno[1],
+            'ape_paterno': alumno[2],
+            'ape_materno': alumno[3],
+            'correo': alumno[4],
+            'num_emergencia': alumno[5],
+            'curso_id': alumno[6]
+        }
+        print(alumno_diccionario)
+        resultado_final.append(alumno_diccionario)
 
-    return {
-        'message': 'Los alumnos son:'
-    }
+    # return {
+    #     'message': 'Los alumnos son:',
+    #     'content': resultado_final
+    # }
+    return render_template('mostrar_alumnos.html', alumnos=resultado_final, mensaje='Hola desde flask')
 
 
 app.run(debug=True)

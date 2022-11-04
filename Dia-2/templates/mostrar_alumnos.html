@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block cuerpo %}
+<p>Estos son los alumnos:</p>
+<p>{{ mensaje }}</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido Paterno</th>
+      <th scope="col">Apellido Materno</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Numero Emergencia</th>
+      <th scope="col">Curso ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for alumno in alumnos %}
+    <tr>
+      <td scope="row">{{ alumno.id }}</td>
+      <td>{{ alumno.nombre }}</td>
+      <td>{{ alumno.ape_paterno }}</td>
+      <td>{{ alumno.ape_materno }}</td>
+      <td>{{ alumno.correo }}</td>
+      <td>{{ alumno.num_emergencia }}</td>
+      <td>
+        {# El primer metodo seria para utilizar un if-else #} {# {% if
+        alumno.curso_id %} {{ alumno.curso_id }} {% else %} -- {% endif %} #} {#
+        Este metodo se utiliza para hacer el uso de un operador ternario #} {{
+        alumno.curso_id if alumno.curso_id else '--' }}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
