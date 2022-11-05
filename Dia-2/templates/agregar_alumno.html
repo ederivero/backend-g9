@@ -46,9 +46,26 @@
         aria-describedby="emailHelp"
       />
     </div>
+
+    <div class="mb-3">
+      <label for="num_emergencia" class="form-label">Curso</label>
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        {# el value debe ser el id de ese curso en la base de datos #}
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
     <button type="submit" class="btn btn-primary" id="btn_agregar">
       Agregar
     </button>
   </form>
 </div>
+{% endblock %} {% block scripts%} {#
+<script src="../static/js/agregar_alumno.js"></script>
+#} {# para agregar archivos js, css o imagenes es recomendable utilizar el
+statement url_for en el cual se indica que tipo de archivo y ademas su nombre de
+archivo #}
+<script src="{{ url_for('static', filename='js/agregar_alumno.js') }}"></script>
 {% endblock %}

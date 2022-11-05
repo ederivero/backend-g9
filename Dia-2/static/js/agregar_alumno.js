@@ -9,19 +9,26 @@ const agregarEvento = (e) => {
   e.preventDefault();
   const data = {
     nombre: nombre.value,
-    ape_materno: ape_materno.value,
+    ape_paterno: ape_paterno.value,
     ape_materno: ape_materno.value,
     correo: correo.value,
     num_emergencia: num_emergencia.value,
   };
 
-  fetch("/agregar-alumno", { method: "POST", body: JSON.stringify(data) })
+  fetch("/agregar-alumno", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" },
+  })
     .then((request) => {
       return request.json();
     })
     .then((data) => {
       console.log(data);
-      window.location.href = "/mostrar-alumnos";
+      // window.location.href = "/mostrar-alumnos";
+    })
+    .catch((error) => {
+      console.log("error al crear el alumno");
     });
 };
 
