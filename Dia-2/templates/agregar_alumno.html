@@ -1,2 +1,54 @@
-{% extends 'base.html' %} {% block cuerpo %} {# Agregar un formulario para
-agregar el alumno #} {% endblock %}
+{% extends 'base.html' %} {% block cuerpo %}
+<div class="container">
+  <form>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="ape_paterno" class="form-label">Ap. Paterno</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ape_paterno"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="ape_materno" class="form-label">Ap. Materno</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ape_materno"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="correo" class="form-label">Correo</label>
+      <input
+        type="email"
+        class="form-control"
+        id="correo"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="num_emergencia" class="form-label">Num. Emergencia</label>
+      <input
+        type="number"
+        class="form-control"
+        id="num_emergencia"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" id="btn_agregar">
+      Agregar
+    </button>
+  </form>
+</div>
+{% endblock %}
