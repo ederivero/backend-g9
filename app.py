@@ -8,7 +8,7 @@ from config import conexion
 from models.usuarios import UsuarioModel
 from models.tareas import TareaModel
 from controllers.usuarioController import UsuariosController
-
+from controllers.pruebaController import PruebaController
 
 # Para cargar las variables del archivo .env para que puedan ser utilizadas como variables de entorno
 load_dotenv()
@@ -28,7 +28,7 @@ migrate = Migrate(app, conexion)
 
 # Declarar todas las rutas que vamos a utilizar mediante los controladores
 api.add_resource(UsuariosController, '/usuarios')
-
+api.add_resource(PruebaController, '/prueba')
 
 if __name__ == '__main__':
     app.run(debug=True)
