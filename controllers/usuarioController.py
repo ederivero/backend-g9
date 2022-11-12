@@ -1,6 +1,7 @@
 from flask_restful import Resource, request
 from config import conexion
 from models.usuarios import UsuarioModel
+from dtos.usuarioDto import UsuarioRequestDto
 
 class UsuariosController(Resource):
     # los metodos que nosotros queramos utilizar (GET, POST) lo tendremos que definir como metodo de la clase
@@ -32,8 +33,12 @@ class UsuariosController(Resource):
     def post(self):
         body = request.get_json()
         try:
+            # Instancia de mi DTO de usuario
+            serializador = UsuarioRequestDto()
+            dataSerializada =  serializador.load(body)
+            print(dataSerializada)
+
             # Primero creo una nueva instancia de mi clase model
-            
             nuevoUsuario = UsuarioModel()
             # asigno los valores a los atributos provenientes del body
             # INSERT INTO usuarios (nombre, correo, telefono) VALUES ('...', '...', '...');
@@ -44,7 +49,7 @@ class UsuariosController(Resource):
             # ahora agregamos a la base de datos ese nuevo registro creado en base a la instancia
             conexion.session.add(nuevoUsuario)
             # guardar de manera permanente la informacion agregada al nuevo usuario
-            conexion.session.commit()
+            # conexion.session.commit()
             print(body)
             return {
                 'message': 'Usuario creado exitosamente'
