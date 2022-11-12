@@ -9,6 +9,7 @@ from models.usuarios import UsuarioModel
 from models.tareas import TareaModel
 from controllers.usuarioController import UsuariosController, UsuarioController
 from controllers.pruebaController import PruebaController
+from controllers.tareaController import TareasController, TareaController
 
 # Para cargar las variables del archivo .env para que puedan ser utilizadas como variables de entorno
 load_dotenv()
@@ -34,6 +35,8 @@ migrate = Migrate(app, conexion)
 api.add_resource(UsuariosController, '/usuarios')
 api.add_resource(PruebaController, '/prueba')
 api.add_resource(UsuarioController, '/usuario/<int:id>')
+api.add_resource(TareasController, '/tareas')
+api.add_resource(TareaController, '/tarea/<int:usuarioId>')
 
 if __name__ == '__main__':
     app.run(debug=True)
