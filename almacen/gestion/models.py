@@ -47,4 +47,5 @@ class AlmacenModel(models.Model):
     departamento = models.OneToOneField(to=DepartamentoModel, on_delete=models.CASCADE, db_column='departamento_id')
 
     class Meta:
+        # db_table > indica como se llamara esta tabla en la base de datos, si no le indicamos usara el nombre de la clase como nombre de la tabla
         db_table = 'almacenes'
