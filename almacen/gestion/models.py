@@ -32,6 +32,7 @@ class AlmacenModel(models.Model):
         HUMEDO = ('C', 'HUMEDO')
 
     # no voy a crear la columna id
+    # db_column > indicara como se va a llamar esta columna en la base de datos, si no se le indica sera el nombre del atributo
     espacioAnaquel = models.IntegerField(db_column='espacio_anaquel')
     tipo = models.CharField(max_length=100, choices=tipoAlmacen)
     # tipo = models.CharField(max_length=100, choices=TipoAlmacenOpciones.choices)
