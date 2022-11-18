@@ -1,0 +1,4 @@
+django-admin startproject NOMBRE_PROYECTO   > crea un nuevo proyecto de DJANGO en la ubicacion de la terminal
+python manage.py startapp NOMBRE_APP        > crea una nueva aplicacion que sirve para el proyecto
+python manage.py runserver                  > levanta el servidor en un servidor de desarrollo
+python manage.py migrate                    > ejecuta todas las migraciones faltantes a la base de datos
