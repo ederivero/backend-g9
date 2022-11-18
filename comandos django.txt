@@ -1,4 +1,8 @@
-django-admin startproject NOMBRE_PROYECTO   > crea un nuevo proyecto de DJANGO en la ubicacion de la terminal
-python manage.py startapp NOMBRE_APP        > crea una nueva aplicacion que sirve para el proyecto
-python manage.py runserver                  > levanta el servidor en un servidor de desarrollo
-python manage.py migrate                    > ejecuta todas las migraciones faltantes a la base de datos
+django-admin startproject NOMBRE_PROYECTO                           > crea un nuevo proyecto de DJANGO en la ubicacion de la terminal
+python manage.py startapp NOMBRE_APP                                > crea una nueva aplicacion que sirve para el proyecto
+python manage.py runserver                                          > levanta el servidor en un servidor de desarrollo
+python manage.py migrate                                            > ejecuta todas las migraciones faltantes a la base de datos
+python manage.py createsuperuser                                    > nos mostrara un formulario para realizar la creacion de un superusuario
+python manage.py makemigrations NOMBRE_APP --name NOMBRE_MIGRACION  > creara una nueva migracion de todos los cambios que hemos realizado en esa aplicacion en sus modelos
+python manage.py sqlmigrate NOMBRE_APP NUM_MIGRACION                > devolvera el comando SQL de la migracion
+python manage.py showmigrations                                     > muestra todas las migraciones y con una [X] las migraciones que se han ejecutado en la base de datos
