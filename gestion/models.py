@@ -37,4 +37,21 @@ class UsuarioModel(AbstractBaseUser, PermissionsMixin):
         ('USER', 'USUARIO')
         ], db_column='tipo_usuario')
 
+    # utilizamos los siguientes atributos si queremos seguir trabajando con el panel administrativo
+    is_staff = models.BooleanField(default=False)
+    # is_active > para saber si sigue activo trabajando en la empresa
+    is_active = models.BooleanField(default=True)
+
+    createdAt =models.DateTimeField(auto_now_add=True, db_column='created_at')
+
     objects = UsuarioManager()
+
+    # sera el campo que pedira el panel administrativo para autorizar al usuario, tiene que ser una columna que sea 'unique'
+    USERNAME_FIELD = 'correo'
+
+    # Las columnas o campos requeridos al momento de crear el usuario por la terminal, osea seran los datos solicitados, no tiene que ir el USERNAME_FIELD puesto que este ya esta implicitamente colocado
+    # Tampoco va la contraseña porque esa ya es por defecto
+    REQUIRED_FIELDS = ['nombre', 'apellido', 'tipoUsuario']
+
+    class Meta:
+        db_table = 'usuarios'
