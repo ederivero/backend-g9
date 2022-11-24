@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework import status
-from .serializers import PruebaSerializer, DepartamentoSerializer
-from .models import DepartamentoModel
+from .serializers import PruebaSerializer, DepartamentoSerializer, AlmacenSerializer
+from .models import DepartamentoModel, AlmacenModel
 
 # request > es la informacion que me llega desde el client
 # https://www.django-rest-framework.org/api-guide/views/#api_view
@@ -84,3 +84,10 @@ class DepartamentoApiView(RetrieveUpdateDestroyAPIView):
 
 
 # TODO: Realizar el crud pero ahora con los almacenes
+class AlmacenesApiView(ListCreateAPIView):
+    serializer_class = AlmacenSerializer
+    queryset = AlmacenModel.objects.all()
+
+class AlmacenApiView(RetrieveUpdateDestroyAPIView):
+    serializer_class = AlmacenSerializer
+    queryset = AlmacenModel.objects.all()

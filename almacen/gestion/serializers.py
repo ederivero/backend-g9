@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import DepartamentoModel
+from .models import DepartamentoModel, AlmacenModel
 
 # https://www.django-rest-framework.org/api-guide/serializers/
 class PruebaSerializer(serializers.Serializer):
@@ -16,3 +16,8 @@ class DepartamentoSerializer(serializers.ModelSerializer):
         # voy a utilizar todas las columnas menos la columna 'nombre'
         # exclude = ['nombre'] 
         # NOTA: No se usa las dos, o se usa 'fields' o se usa 'exclude'
+
+class AlmacenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AlmacenModel
+        fields = '__all__'

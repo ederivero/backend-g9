@@ -1,7 +1,7 @@
 # Aca definiremos todas las rutas que tendra acceso nuestra aplicacion
 # Listado de los anexos de esta aplicacion
 from django.urls import path
-from .views import saludar, parametros, PruebaApiView, DepartamentosApiView, DepartamentoApiView
+from .views import saludar, parametros, PruebaApiView, DepartamentosApiView, DepartamentoApiView, AlmacenesApiView, AlmacenApiView
 
 # Tenemos que crear esta variable NO SE PUEDE LLAMAR DE OTRA MANERA
 urlpatterns = [
@@ -12,5 +12,7 @@ urlpatterns = [
     path('prueba/', PruebaApiView.as_view()),
     path('departamentos/', DepartamentosApiView.as_view()),
     path('departamento/<int:pk>', DepartamentoApiView.as_view()),
+    path('almacenes/', AlmacenesApiView.as_view()),
+    path('almacen/<int:pk>', AlmacenApiView.as_view()),
 
 ]
