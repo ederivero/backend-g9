@@ -47,3 +47,9 @@ class PlatoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlatoModel
         fields = '__all__'
+        # utilizando el atributo extra_kwargs indicar que solamente la disponibilidad sera de solo lectura 
+        extra_kwargs = {
+            'disponibilidad': {
+                'read_only': True
+            }
+        }

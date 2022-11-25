@@ -38,15 +38,18 @@ class PlatosApiView(ListCreateAPIView):
     serializer_class = PlatoSerializer
 
     def post(self, request:Request):
-        data = self.serializer_class(data= request.data)
+        # podemos pasar dos parametros PERO o es uno o es el otro
+        # data > pasar informacion que aun no esta guardada en la base de datos, eso se usa para hacer la validacion de esa info
+        # instance > pasar una INSTANCIA de ese registro que ya se encuentra en la base de datos, se utiliza para convertir esa informacion en una informacion legible para el client
+        data = self.serializer_class(data = request.data)
         # raise_exception > si hay algun error, automaticamente detiene todo el proceso y emite el error
-        data.is_valid(raise_exception=True)
+        data.is_valid(raise_exception = True)
 
         nuevoPlato = data.save()
 
         return Response(data={
             'message': 'plato creado exitomsamente',
-            'content': self.serializer_class(instance=nuevoPlato).data
+            'content': self.serializer_class(instance = nuevoPlato).data
         })
 
     def get(self, request: Request):
