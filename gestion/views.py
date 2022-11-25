@@ -1,4 +1,4 @@
-from rest_framework.generics import CreateAPIView, ListCreateAPIView
+from rest_framework.generics import CreateAPIView, ListCreateAPIView, UpdateAPIView
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework import status
@@ -53,4 +53,45 @@ class PlatosApiView(ListCreateAPIView):
         })
 
     def get(self, request: Request):
-        pass
+        # ejecuta el queryset para que otra vez se vuelva a llamar a la extraccion de la informacion
+        # https://docs.djangoproject.com/en/4.1/topics/db/queries/
+        # SELECT * FROM platos WHERE disponibilidad = true;
+        platos = PlatoModel.objects.filter(disponibilidad = True).all()
+        # many > sirve para indicar al serializador que se le pasara un conjunto de instancias y las tiene que iterar para poder serializarlas / deserializarlas
+        platos_serializados = self.serializer_class(instance=platos, many=True)
+
+        return Response(data={
+            'message': 'Los platos son:',
+            'content': platos_serializados.data
+        })
+
+
+class PlatoToggleApiView(UpdateAPIView):
+    queryset= PlatoModel.objects.all()
+    serializer_class = PlatoSerializer
+
+    def put(self, request:Request, id: str):
+        # primero busco si existe el plato
+        # SELECT * FROM platos WHERE id = ... LIMIT 1;
+        platoEncontrado = PlatoModel.objects.filter(id = id).first()
+
+        if platoEncontrado is None:
+            return Response(data={
+                'message': 'plato no encontrado'
+            }, status=status.HTTP_404_NOT_FOUND)
+        
+        # actualizare el estado de la disponibilidad
+        # la nueva disponibilidad sera la anterior al reves
+        platoEncontrado.disponibilidad = not platoEncontrado.disponibilidad
+
+        platoEncontrado.save()
+
+        return Response(data={
+            'message': 'plato actualizado exitosamente',
+            'content': self.serializer_class(instance=platoEncontrado).data
+        }, status=status.HTTP_201_CREATED)
+
+
+class PlatoUpdateApiView(UpdateAPIView):
+    queryset = PlatoModel.objects.all()
+    serializer_class = PlatoSerializer
