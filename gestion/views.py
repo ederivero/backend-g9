@@ -17,6 +17,7 @@ from .permissions import SoloAdmin
 class RegistroUsuarioApiView(CreateAPIView):
     queryset = UsuarioModel.objects.all()
     serializer_class= UsuarioSerializer
+    permission_classes = [SoloAdmin]
 
     def post(self, request: Request):
         informacion = self.serializer_class(data= request.data)
