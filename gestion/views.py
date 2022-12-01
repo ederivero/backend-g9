@@ -11,8 +11,10 @@ from .serializers import UsuarioSerializer, PlatoSerializer
 # https://www.django-rest-framework.org/api-guide/permissions/
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework_simplejwt.authentication import JWTAuthentication
-
+from rest_framework.decorators import api_view
 from .permissions import SoloAdmin
+# Para utilizar la raw queries (consulta directa a la base de datos sin utilizar el ORM)
+from django.db import connection
 
 class RegistroUsuarioApiView(CreateAPIView):
     queryset = UsuarioModel.objects.all()
@@ -127,5 +129,31 @@ class VistaProtegidaPlatosApiView(ListAPIView):
             'usuario': {
                 'id': request.user.id,
                 'correo': request.user.correo
+            }
+        })
+
+@api_view(http_method_names=['GET'])
+def mostrar_usuarios_raw(request):
+    with connection.cursor() as cursor:
+        # al utilizar un SP, funcion, vista o algo que no se haya definido en los modelos en el ORM, la unica forma de utilizarlo desde el backend es mediante una raw query
+        cursor.execute('CALL DevolverTodosLosUsuarios()')
+        resultado = cursor.fetchall()
+        # print(resultado)
+        # ahora mapeariamos el resultado  (se recomienda utilizar un serializador PERO no un ModelSerializer puesto que no estamos utilizando ningun modelo)
+        for usuario in resultado:
+            print(usuario[3]) # nombre
+        
+        # Este seria el caso en el cual nosotros queremos utilizar un SP que devuelva cierta informacion con un parametro OUT
+        cursor.execute("CALL DevolverUsuariosSegunTipo('ADMIN', @usuarioId)")
+        cursor.execute('SELECT @usuarioId')
+        # fetchone() > devolvera la primera fila de todo el resultado
+        # fetchall() > devolvera todos los registros
+        # fetchmany(registros) > devolver la cantidad de registros indicada
+        resultado2 = cursor.fetchone()
+        print(resultado2)
+        return Response(data={
+            'message': 'Procedimiento almacenado ejecutado exitosamente',
+            'content': {
+                'admin': resultado2[0]
             }
         })
