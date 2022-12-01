@@ -30,7 +30,8 @@ SECRET_KEY = 'django-insecure-zz6jp%$pz0^e#6w6@$qz&2p$zlgu^v84o^h1e6a=a1%=)l28-8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Cuando ya utilicemos un servidor de produccion ingresara a validar los host (dominios) permitidos que pueden consultar mi backend y del mismo si definimos un host para el modo de desarrollo tambien hara la validacion
+ALLOWED_HOSTS = ['restaurante-django-eduardo.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
