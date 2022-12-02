@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "description": "Mi primer proyecto de backend",
     "scripts": {
-        "saludar": "echo Hola"
+        "saludar": "echo Hola",
+        "ejecutar": "node practica.js"
     },
     "dependencies": {
         "is-odd": "^3.0.1"
