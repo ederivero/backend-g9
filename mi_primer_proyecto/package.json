@@ -1,0 +1,14 @@
+{
+    "name": "proyecto",
+    "version": "1.0.0",
+    "description": "Mi primer proyecto de backend",
+    "scripts": {
+        "saludar": "echo Hola"
+    },
+    "dependencies": {
+        "is-odd": "^3.0.1"
+    },
+    "engines": {
+        "node": "19.2.0"
+    }
+}
