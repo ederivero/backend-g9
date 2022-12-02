@@ -1,0 +1,4 @@
+npm init                > genera un formulario para crear el archivo package.json
+npm install PACKAGE     > instala la libreria en su version mas reciente
+npm uninstall PACKAGE   > desinstala la libreria y la retira de las dependencias
+npm run COMANDO         > ejecuta el comando registrado en la seccion de scripts

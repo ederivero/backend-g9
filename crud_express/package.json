@@ -1,0 +1,25 @@
+{
+  "name": "crud_express",
+  "version": "1.0.0",
+  "description": "CRUD usando express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "backend"
+  ],
+  "author": "Eduardo de Rivero",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "nodemon": "^2.0.20"
+  }
+}
