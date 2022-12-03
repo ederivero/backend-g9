@@ -1,0 +1,3 @@
+npx prisma init         > inicializa la configuracion de prisma en nuestro proyecto
+npx prisma format       > formatea el archivo schema.prisma y lo ordena
+npx prisma migrate dev  > crea una nueva migracion, solicitandonos el nombre y luego la ejecuta para que se vea reflejada en la base de datos, luego genera el cliente que es la libreria que nos servira para poder trabajar con la bd desde nuestro backend
