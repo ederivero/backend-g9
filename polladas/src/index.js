@@ -1,5 +1,6 @@
 import express, { json } from "express";
 import { clientesRouter } from "./routes/clientes.routes.js";
+import { pedidosRouter } from "./routes/pedidos.routes.js";
 import { productosRouter } from "./routes/productos.routes.js";
 
 const servidor = express();
@@ -11,6 +12,7 @@ const PORT = process.env.PORT ?? 5000;
 
 servidor.use(productosRouter);
 servidor.use(clientesRouter);
+servidor.use(pedidosRouter);
 
 servidor.listen(PORT, () => {
   console.log(`Servidor corriendo exitosamente en el puerto ${PORT}`);
