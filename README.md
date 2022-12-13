@@ -20,3 +20,4 @@ Cada semana esta en una rama independiente, en la cual se ira detallando a conti
 - Semana 08: <a href="https://github.com/ederivero/backend-g9/tree/semana08">LINK</a>
 - Semana 09: No hay
 - Semana 10: No hay
+- Semana Repaso: <a href="https://github.com/ederivero/backend-g9/tree/semana-repaso">LINK</a>
