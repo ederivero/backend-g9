@@ -66,10 +66,10 @@ export async function perfil(req, res) {
   // Estamos utilizando una funcion de agregacion para seleccionar el usuario con sus agendas y ademas evitar mostrar el password pero solamente el usuario cuyo id sea el de req.user
   const usuarioEncontrado = await Usuario.aggregate()
     .lookup({
-      from: "agendas",
-      localField: "agendas",
-      foreignField: "_id",
-      as: "agendas",
+      from: "agendas", // nombre de la tabla de donde voy a hacer el join
+      localField: "agendas", // nombre de la columna que usare en mi tabla usuario
+      foreignField: "_id", // nombre de la columna que usare en la tabla agendas
+      as: "agendas", // alias
     })
     .match({ _id: req.user._id })
     .project("-password");
