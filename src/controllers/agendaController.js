@@ -18,3 +18,24 @@ export async function crearAgenda(req, res) {
     });
   }
 }
+
+export async function listarAgenda(req, res) {
+  const usuarioId = req.user._id;
+
+  // left outer join utilizando lo que vendria a hacer una clausula condicional cuando concuerde que solamente muestre las agendas de ese usuario
+  const agendas = await Agenda.aggregate([
+    {
+      $match: { usuario: usuarioId },
+    },
+  ]).lookup({
+    from: "usuarios", // aca va el nombre de la coleccion, NO EL NOMBRE DEL MODELO
+    localField: "usuario", // la columna de la tabla agenda que usaremos
+    foreignField: "_id", // la columna de la tabla usuarios que usaremos para la relacion
+    as: "propietario", // en que columna se mostrara este join
+  });
+
+  console.log(agendas);
+  res.json({
+    content: agendas,
+  });
+}

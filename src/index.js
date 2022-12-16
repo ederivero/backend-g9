@@ -1,7 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
-import { usuarioRouter } from "./routes/usuarioRoute.js";
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.MONGO_URI, {});
+
+import { Usuario } from "./models/usuarioModel.js";
+import { Agenda } from "./models/agendaModel.js";
 import { agendaRouter } from "./routes/agendaRoute.js";
+import { usuarioRouter } from "./routes/usuarioRoute.js";
 const server = express();
 const PORT = process.env.PORT ?? 5000;
 
