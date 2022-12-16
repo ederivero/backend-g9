@@ -1,10 +1,17 @@
 import { Agenda } from "../models/agendaModel.js";
+import { Usuario } from "../models/usuarioModel.js";
 
 export async function crearAgenda(req, res) {
   const data = req.body;
   const usuarioId = req.user._id;
   try {
     const agendaCreada = await Agenda.create({ ...data, usuario: usuarioId });
+
+    // ahora tenemos que agregar ese id de la agenda a las agendas del usuario
+    await Usuario.updateOne(
+      { _id: usuarioId },
+      { agendas: [...req.user.agendas, agendaCreada._id] }
+    );
 
     res.status(201).json({
       message: "Agenda creada exitosamente",

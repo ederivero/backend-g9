@@ -58,9 +58,21 @@ export async function login(req, res) {
 export async function perfil(req, res) {
   console.log(req.user);
   // seleccionamos solamente el nombre del usuario indicando las columnas separadas por espacio y la que no se le coloca un signo negativo (-)
-  const usuarioEncontrado = await Usuario.findById(req.user._id).select(
-    "nombre email direcciones" // -_id"
-  );
+
+  // const usuarioEncontrado = await Usuario.findById(req.user._id).select(
+  //   "nombre email direcciones" // -_id"
+  // );
+
+  // Estamos utilizando una funcion de agregacion para seleccionar el usuario con sus agendas y ademas evitar mostrar el password pero solamente el usuario cuyo id sea el de req.user
+  const usuarioEncontrado = await Usuario.aggregate()
+    .lookup({
+      from: "agendas",
+      localField: "agendas",
+      foreignField: "_id",
+      as: "agendas",
+    })
+    .match({ _id: req.user._id })
+    .project("-password");
 
   res.json({
     content: usuarioEncontrado,

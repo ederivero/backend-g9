@@ -31,7 +31,7 @@ const usuarioSchema = new mongoose.Schema(
     },
     direcciones: [direccionSchema],
     // creamos ahora la relacion VIRTUAL entre los usuarios y sus agendas
-    // agendas: [{ type: mongoose.Schema.Types.ObjectId, ref: "Agenda" }],
+    agendas: [{ type: mongoose.Schema.Types.ObjectId, ref: "Agenda" }],
   },
   {
     // https://mongoosejs.com/docs/guide.html#options
