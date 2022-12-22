@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from datetime import timedelta
+from flask_cors import CORS
 
 from config import conexion
 # declaramos los modelos para que el historia de migraciones lo registre
@@ -17,6 +18,7 @@ from controllers.regaloController import RegaloController
 load_dotenv()
 
 aplicacion = Flask(__name__)
+CORS(app=aplicacion)
 api = Api(app=aplicacion)
 # Variable que utiliza sqlalchemy para poder conectarse a la base de datos
 aplicacion.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DATABASE_URI')

@@ -72,7 +72,7 @@ class LoginController(Resource):
             return {
                 'message': 'Error al hacer el login',
                 'content': e.args
-            }
+            }, 400
 
 
 class PerfilController(Resource):
