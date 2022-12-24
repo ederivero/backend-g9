@@ -37,6 +37,9 @@ const agendaSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Usuario",
   },
+  imagen: {
+    type: mongoose.Schema.Types.String,
+  },
 });
 
 export const Agenda = mongoose.model("agendas", agendaSchema);
